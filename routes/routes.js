@@ -10,6 +10,7 @@ router.get('/', controller.mainPage);
 router.get('/users/all', controller.allUsers);
 router.post('/users', controller.createAdmin);
 router.post('/users/login', controller.checkUser);
+router.get('/users/:username', controller.getinfoByUsername);
 
 //Display news
 router.post('/news', controller.createNews);
