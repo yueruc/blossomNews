@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const fakeNews = mongoose.model('fakenews');
 
+//the main Page
 let mainPage = function(req, res) {
-    res.send("Main page");
+    res.send("Welcome to Blossom");
 };
 
 // Push 4 users and save to database.
@@ -25,7 +26,7 @@ let createAdmin = function(req, res) {
     });
 };
 
-
+//find all users 
 let allUsers = function(req, res) {
     User.find(function(err, allUsers) {
         if (!err) {
@@ -36,6 +37,7 @@ let allUsers = function(req, res) {
     });
 };
 
+//check logIn system with username & password
 let checkUser = function(req, res){
     var userName = req.body.username;
     var passWord = req.body.password;
@@ -107,9 +109,9 @@ var getNewestNews = function(req, res) {
     
 }
 
+module.exports.mainPage = mainPage;
 
 //user
-module.exports.mainPage = mainPage;
 module.exports.createAdmin = createAdmin;
 module.exports.allUsers = allUsers;
 module.exports.checkUser = checkUser;

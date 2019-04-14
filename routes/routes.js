@@ -3,9 +3,10 @@ var router = express.Router();
 
 var controller = require('../controller/controller.js');
 
+// Display the main Page
+router.get('/', controller.mainPage);
 
 // Display a random generated user.
-router.get('/', controller.mainPage);
 router.get('/users/all', controller.allUsers);
 router.post('/users', controller.createAdmin);
 router.post('/users/login', controller.checkUser);
