@@ -52,6 +52,18 @@ let checkUser = function(req, res){
 
 }
 
+//check one userinfomation by username
+let getinfoByUsername = function(req, res) {
+    var userName = req.params.username;
+    User.find({username:userName}, function(err, user) {
+        if (user) {
+            res.json(user);
+        }else{
+            res.send("No user Found");
+        }
+    });
+};
+
 // first create news
 let createNews = function(req, res) {
     let fakeNews = new fakeNews(
@@ -115,6 +127,7 @@ module.exports.mainPage = mainPage;
 module.exports.createAdmin = createAdmin;
 module.exports.allUsers = allUsers;
 module.exports.checkUser = checkUser;
+module.exports.getinfoByUsername = getinfoByUsername;
 //News
 module.exports.allNews = allNews;
 module.exports.createNews = createNews;
