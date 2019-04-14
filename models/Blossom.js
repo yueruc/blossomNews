@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//creating Schema for news
 const newsSchema = mongoose.Schema(
     {
         category: String,
@@ -9,6 +10,7 @@ const newsSchema = mongoose.Schema(
     }
 );
 
+//create Schema for users
 const userSchema = mongoose.Schema(
     {
         username: String,
