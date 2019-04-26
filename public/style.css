@@ -1,0 +1,213 @@
+.main-page{
+    width: 100%;
+    height: 1900px;
+    background-color:white;
+}
+
+.slick-slide img {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.nav{
+    height:150px;
+    background:rgba(255,255,255,1);
+    box-shadow:10px 10px 15px 0px rgba(196,196,196,0.5);
+    font-size: 55px;
+    width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    z-index: 1;
+    margin-bottom: 2%;
+}
+
+.logo{
+    width: 200px;
+    height: 140px;
+    margin-left: 6%;
+    display: inline-block;
+    position: absolute;
+}
+
+.nav div {
+    width: 45%;
+    display: inline-block;
+    position: absolute;
+    top: 7%;
+    left: 35%;
+}
+
+.search{
+    width: 50px;
+    display: inline-block;
+    position: absolute;
+    top: 6%;
+    left: 29%;
+}
+.nav div input{
+    width: 100%;
+}
+
+
+.user{
+    width: 50px;
+    display: inline-block;
+    position: absolute;
+    top: 6%;
+    right: 10%;
+}
+
+
+@font-face {
+	font-family: 'REEJI';
+	src: url('static/font/REEJI.ttf')  format('truetype');
+    font-weight: normal; 
+    font-style: normal; 
+    display: block;
+    }
+
+@font-face {
+    font-family: '28DaysLaterCyr';
+    src: url('static/font/ubuMJYxt.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal; 
+    font-style: normal; 
+    display: block;
+}
+
+.title {
+    font-size: 80px;
+    font-family: "REEJI";
+    font-weight: 400;
+    color: white;
+    line-height: 85px;
+    margin-top: -18%;
+    margin-left: -46%;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+.category-container{
+    width: 100%;
+    height: 800px;
+    background-color:white;
+    margin-top: 30px;
+}
+
+.category-title{
+    font-size:100px;
+    font-weight:400;
+    font-family:"28DaysLaterCyr";
+    color:black;
+    line-height:40px;
+    display: block;
+    text-align: center;
+    padding: 3%;
+}
+
+.grid-container{
+    margin-left:10%;
+    width: 80%;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows:250px 250px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.grid-sport{
+    background: url("static/images/main-page/cate-sport.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+
+.grid-art{
+    background: url("static/images/main-page/arts.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+
+.grid-entertainment{
+    background: url("static/images/main-page/cate-entertainment.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+.grid-finance{
+    background: url("static/images/main-page/finance.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+
+.grid-politics{
+    background: url("static/images/main-page/cate-politics.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+.grid-technology{
+    background: url("static/images/main-page/cate-tech.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+.grid-travel{
+    background: url("static/images/main-page/cate-travel.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+
+.grid-wheather{
+    background: url("static/images/main-page/cate-wheather.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+.category-font{
+    font-size:28px;
+    font-family:"REEJI";
+    color:white;
+    line-height:40px;
+    display: block;
+    text-align: center;
+    padding-top: 30%;
+}
+.category-font:hover{
+    color: yellow;
+}
+
+.footer{
+    height: 100px;
+    font-size: 55px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    background-color:grey;
+    margin-top: 19%; 
+}
+.footer p{
+    width:252px;
+    height:24px;
+    font-size:14px;
+    font-family:Roboto-Regular;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:24px;
+    padding: 3%;
+}
+
+.box{
+    display: inline-block;
+    position: absolute;
+    width: 40%;
+}
