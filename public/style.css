@@ -1,3 +1,5 @@
+/*main-page*/
+
 .main-page{
     width: 100%;
     height: 1900px;
@@ -60,18 +62,18 @@
 
 
 @font-face {
-	font-family: 'REEJI';
-	src: url('static/font/REEJI.ttf')  format('truetype');
-    font-weight: normal; 
-    font-style: normal; 
+    font-family: 'REEJI';
+    src: url('static/font/REEJI.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
     display: block;
-    }
+}
 
 @font-face {
     font-family: '28DaysLaterCyr';
     src: url('static/font/ubuMJYxt.ttf')  format('truetype'); /* Safari, Android, iOS */
-    font-weight: normal; 
-    font-style: normal; 
+    font-weight: normal;
+    font-style: normal;
     display: block;
 }
 
@@ -193,7 +195,7 @@
     display: block;
     position: relative;
     background-color:grey;
-    margin-top: 19%; 
+    margin-top: 19%;
 }
 .footer p{
     width:252px;
@@ -210,4 +212,69 @@
     display: inline-block;
     position: absolute;
     width: 40%;
+}
+
+
+/* Entertainment page add-on*/
+/* Entertainment page add-on*/
+.all-news-containter{
+    width: 80%;
+    height: 100%;
+    background: rgba(244,244,244,1);
+    border: 1px solid rgba(112,112,112,1);
+    opacity: 1;
+    border-radius: 5px;
+    position: relative;
+    margin-left: 10%;
+}
+
+.single-news-container{
+    margin-left:10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows:250px 250px;
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+}
+
+.grid-news {
+    background: url(static/images/Entertainment/news.jpg) no-repeat;
+    position: center;
+    background-size: contain;
+}
+
+.news-title-container{
+    width: 100%;
+    height:400px;
+    display: block;
+}
+
+.news-font{
+    font-size:16px;
+    font-family:"REEJI";
+    color:red;
+    line-height:40px;
+    display: block;
+    text-align: center;
+    padding-top: 30%;
+}
+
+
+.news-title-container p{
+    font-size: 100px;
+    font-weight: 400;
+    font-family: "28DaysLaterCyr";
+    color: white;
+    line-height: 40px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 7%;
+}
+.news-title-container img{
+    width: 100%;
+    height: 500px;
 }
