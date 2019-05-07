@@ -24,4 +24,8 @@ The aethetic design of the website
 Function achieved: Selecting category and displaying corresponding news (fake) 
 
 
+//Deliverable 4 MainPage: "localhost:3000/"
+(changed one: all html files changed to pug files)
+
+"REMEMBER TO "NPM INSTALL PUG" FIRST !!!!!!"
 ....

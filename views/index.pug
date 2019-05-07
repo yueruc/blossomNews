@@ -1,0 +1,74 @@
+doctype html
+head
+    title Blossom News
+    meta(charset='UTF-8')
+    link(rel='stylesheet' href='style.css')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    style.
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+.nav
+    a(href='/')
+        img.logo(src='static/images/main-page/logo.png' alt='logo')
+    div
+        input.form-control.mr-sm-2(type='text' placeholder='Search')
+    img.search(src='static/images/main-page/search.svg')
+    img.user(src='static/images/main-page/login.svg')
+#demo.carousel.slide(data-ride='carousel')
+    ul.carousel-indicators
+        li.active(data-target='#demo' data-slide-to='0')
+        li(data-target='#demo' data-slide-to='1')
+        li(data-target='#demo' data-slide-to='2')
+    .carousel-inner
+        .carousel-item.active
+            img(src='static/images/main-page/sport.png' alt='Los Angeles' width='1100' height='500')
+            .carousel-caption
+                p.title Sports News
+        .carousel-item
+            img(src='static/images/main-page/entertainment.png' alt='Chicago' width='1100' height='500')
+            .carousel-caption
+                p.title Arts News
+        .carousel-item
+            img(src='static/images/main-page/travel-1.png' alt='New York' width='1100' height='500')
+            .carousel-caption
+                p.title Travel News
+    a.carousel-control-prev(href='#demo' data-slide='prev')
+        span.carousel-control-prev-icon
+    a.carousel-control-next(href='#demo' data-slide='next')
+        span.carousel-control-next-icon
+.category-container
+    p.category-title CATEGORY
+    .grid-container
+        .grid-sport
+            a(href='/sport')
+                p.category-font sport
+        .grid-art
+            a(href='/art')
+                p.category-font Arts
+        .grid-entertainment
+            a(href='/entertainment')
+                p.category-font Entertainment
+        .grid-travel
+            a(href='/travel')
+                p.category-font Travel
+        .grid-technology
+            a(href='/tech')
+                p.category-font Technology
+        .grid-politics
+            a(href='/politics')
+                p.category-font Politics
+        .grid-finance
+            a(href='/finance')
+                p.category-font Finance
+        .grid-weather
+            a(href='/weather')
+                p.category-font Weather
+    .footer
+        p About us
+
