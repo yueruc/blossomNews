@@ -1,0 +1,57 @@
+extends default
+
+block content
+
+    div.main
+    
+        #demo.carousel.slide(data-ride='carousel')
+            ul.carousel-indicators
+                li.active(data-target='#demo' data-slide-to='0')
+                li(data-target='#demo' data-slide-to='1')
+                li(data-target='#demo' data-slide-to='2')
+            .carousel-inner
+                .carousel-item.active
+                    img(src='static/images/main-page/sport.png' alt='Los Angeles' width='1100' height='500')
+                    .carousel-caption
+                        p.title Sports News
+                .carousel-item
+                    img(src='static/images/main-page/entertainment.png' alt='Chicago' width='1100' height='500')
+                    .carousel-caption
+                        p.title Arts News
+                .carousel-item
+                    img(src='static/images/main-page/travel-1.png' alt='New York' width='1100' height='500')
+                    .carousel-caption
+                        p.title Travel News
+            a.carousel-control-prev(href='#demo' data-slide='prev')
+                span.carousel-control-prev-icon
+            a.carousel-control-next(href='#demo' data-slide='next')
+                span.carousel-control-next-icon
+        .category-container
+            p.category-title CATEGORY
+            .grid-container
+                .grid-sport
+                    a(href='/sports')
+                        p.category-font sport
+                .grid-art
+                    a(href='/art')
+                        p.category-font Arts
+                .grid-entertainment
+                    a(href='/entertainment')
+                        p.category-font Entertainment
+                .grid-travel
+                    a(href='/travel')
+                        p.category-font Travel
+                .grid-technology
+                    a(href='/tech')
+                        p.category-font Technology
+                .grid-politics
+                    a(href='/politics')
+                        p.category-font Politics
+                .grid-finance
+                    a(href='/finance')
+                        p.category-font Finance
+                .grid-weather
+                    a(href='/weather')
+                        p.category-font Weather
+
+    </div>

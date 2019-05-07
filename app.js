@@ -2,8 +2,12 @@ const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
 
+// set the view engine
+app.set('view engine', 'pug');
+
 // test express where the static files are kept
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,9 +25,9 @@ app.use('/',routes);
 //Displaying mainpage
 app.get('/', (req, res) => {
 
-    res.render('Mainpage');
-  });
-  
+    res.render('index');
+});
+
 //Start the server
 app.listen(PORT, function() {
     console.log(`Express serving at port ${PORT}`);
