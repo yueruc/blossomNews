@@ -28,47 +28,6 @@ app.get('/', (req, res) => {
     res.render('index');
   });
 
-//Render the rest pages
-app.get('/art', (req, res) => {
-
-    res.render('art.pug');
-});
-
-app.get('/entertainment', (req, res) => {
-
-    res.render('entertainment.pug');
-});
-
-app.get('/finance', (req, res) => {
-
-    res.render('finance.pug');
-});
-
-app.get('/politics', (req, res) => {
-
-    res.render('politics.pug');
-});
-
-app.get('/sport', (req, res) => {
-
-    res.render('sport.pug');
-});
-
-app.get('/tech', (req, res) => {
-
-    res.render('tech.pug');
-});
-
-app.get('/travel', (req, res) => {
-
-    res.render('travel.pug');
-});
-
-app.get('/weather', (req, res) => {
-
-    res.render('weather.pug');
-});
-
 //Start the server
 app.listen(PORT, function() {
     console.log(`Express serving at port ${PORT}`);

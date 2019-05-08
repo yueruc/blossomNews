@@ -1,0 +1,14 @@
+extends default
+
+block content
+
+    div.arts-news-title-container
+        img(src='static/images/art/art01.jpg' alt='art' width='100%')   
+        div.single-news-container
+            each news in fakenews
+                div.politics-grid-news
+                    p.politics-news-font #{news.title}
+                </div>      
+        </div>
+    </div>
+
