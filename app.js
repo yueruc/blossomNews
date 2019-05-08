@@ -22,12 +22,6 @@ require('./models/db.js');
 var routes = require('./routes/routes.js');
 app.use('/',routes);
 
-//Displaying mainpage
-app.get('/', (req, res) => {
-
-    res.render('index');
-  });
-
 //Start the server
 app.listen(PORT, function() {
     console.log(`Express serving at port ${PORT}`);

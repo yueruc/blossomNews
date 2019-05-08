@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const fakeNews = mongoose.model('fakenews');
 
+
 //the main Page
 let mainPage = function(req, res) {
-    res.send("Welcome to Blossom");
+    res.render('index',{
+        title: "BlossomNews"
+    });
 };
 
 // Push 4 users and save to database.
@@ -37,6 +40,12 @@ let allUsers = function(req, res) {
     });
 };
 
+let login = function(req,res){
+    res.render('login',{
+        title: "login"
+    });
+};
+
 
 //check logIn system with username & password
 let checkUser = function(req, res){
@@ -44,11 +53,16 @@ let checkUser = function(req, res){
     var passWord = req.body.password;
 
     User.findOne({username: userName, password: passWord}, function(err, user){
-        if(user){
-            res.send("Successfully LogIn");
+        if(!err){
+            if(user){
+                res.send("Successfully LogIn");
+            }else{
+                res.send("Fail to LogIn");
+            }
         }else{
-            res.send("Fail to LogIn");
+            res.sendStatus(400);
         }
+        
     });
 
 }
@@ -66,9 +80,13 @@ let getinfoByUsername = function(req, res) {
     });
 };
 
+
+
+
+
 // first create news
 let createNews = function(req, res) {
-
+  
     let fakeNews = new fakeNews(
         {
             "category": req.body.category,
@@ -77,17 +95,7 @@ let createNews = function(req, res) {
             "dates": req.body.dates
         }
     );
-
-    // var newsCategory = req.params.category;
-
-    // newsapi.v2.sources({
-    //     category: newsCategory,
-    //     language: 'en',
-    //     country: 'us'
-    // }).then(response => {
-    //     console.log(response);
-    // });
-
+    
     news.save(function(err, newfakeNews) {
         if (!err) {
             res.json(newfakeNews);
@@ -95,7 +103,9 @@ let createNews = function(req, res) {
             res.sendStatus(400);
         }
     });
+
 };
+
 //check all the news
 let allNews = function(req, res) {
     fakeNews.find(function(err, allfakeNews) {
@@ -109,9 +119,7 @@ let allNews = function(req, res) {
 
 
 //find news by category
-
-// eight category 分开做还是合起来做
-var findOneNews = function(req, res) {
+var findOneCategoryNews = function(req, res) {
     var newscategory = req.params.category;
     fakeNews.find({category:newscategory}, function(err, fakenews) {
         if (err) {
@@ -126,15 +134,7 @@ var findOneNews = function(req, res) {
     });
 };
 
-// To query sources
-// All options are optional
-// newsapi.v2.sources({
-//     category: 'technology',
-//     language: 'en',
-//     country: 'us'
-// }).then(response => {
-//     console.log(response);
-// });
+
 
 //get newest news
 var getNewestNews = function(req, res) {
@@ -155,6 +155,7 @@ var getNewestNews = function(req, res) {
 module.exports.mainPage = mainPage;
 
 //user
+module.exports.login = login;
 module.exports.createAdmin = createAdmin;
 module.exports.allUsers = allUsers;
 module.exports.checkUser = checkUser;
@@ -162,5 +163,5 @@ module.exports.getinfoByUsername = getinfoByUsername;
 //News
 module.exports.allNews = allNews;
 module.exports.createNews = createNews;
-module.exports.findOneNews = findOneNews;
+module.exports.findOneCategoryNews = findOneCategoryNews;
 module.exports.getNewestNews = getNewestNews;
