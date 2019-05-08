@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 //creating Schema for news
 const newsSchema = mongoose.Schema(
     {
+        id: String,
+        description: String,
+        url: String,
         category: String,
-        title: String,
-        length: String,
         dates: Date
     }
 );
@@ -20,4 +21,4 @@ const userSchema = mongoose.Schema(
 );
 
 mongoose.model('users', userSchema);
-mongoose.model('fakenews',newsSchema);
+mongoose.model('news',newsSchema);

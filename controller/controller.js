@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
-const fakeNews = mongoose.model('fakenews');
+const News = mongoose.model('news');
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('abf08a911e534e629682c3098dc1b9ca');
 
 
 //the main Page
@@ -87,18 +89,19 @@ let getinfoByUsername = function(req, res) {
 // first create news
 let createNews = function(req, res) {
   
-    let fakeNews = new fakeNews(
+    let news = new News(
         {
+            "id": req.body.id,
+            "description": req.body.description,
+            "url": req.body.url,
             "category": req.body.category,
-            "title": req.body.title,
-            "length": req.body.length,
             "dates": req.body.dates
         }
     );
     
-    news.save(function(err, newfakeNews) {
+    news.save(function(err, newNews) {
         if (!err) {
-            res.json(newfakeNews);
+            res.json(newNews);
         } else {
             res.sendStatus(400);
         }
@@ -108,27 +111,52 @@ let createNews = function(req, res) {
 
 //check all the news
 let allNews = function(req, res) {
-    fakeNews.find(function(err, allfakeNews) {
+    News.find(function(err, allNews) {
         if (!err) {
-            res.send(allfakeNews);
+            res.send(allNews);
         } else {
             res.sendStatus(400);
         }
     });
 };
 
+let addNews = function(req, res){
+
+    newsapi.v2.sources({
+        category: 'health'
+    }).then(response => {
+        let newsArray = response.sources;
+        console.log(response.sources);
+        for (let i = 0; i < 9; i++) {
+            let news = new News(
+                {
+                    "id": newsArray[i].id,
+                    "description": newsArray[i].description,
+                    "url": newsArray[i].url,
+                    "category": newsArray[i].category
+                    //"dates": new.dates
+                }
+            );
+            news.save(function(err, newnews) {
+                if (err) {
+                    res.sendStatus(400);
+                }
+            });
+        }
+    });
+};
 
 //find news by category
 var findOneCategoryNews = function(req, res) {
     var newscategory = req.params.category;
-    fakeNews.find({category:newscategory}, function(err, fakenews) {
+    News.find({category:newscategory}, function(err, news) {
         if (err) {
             res.send("No matching Found!");
         }else{
             //res.send(fakenews);
             res.render('news', {
                 title: newscategory,
-                fakenews: fakenews
+                news: news
             });
         }
     });
@@ -139,9 +167,9 @@ var findOneCategoryNews = function(req, res) {
 //get newest news
 var getNewestNews = function(req, res) {
     var newstime = req.params.dates;
-    fakeNews.find({dates:newstime}, function(err, fakenews){
+    News.find({dates:newstime}, function(err, news){
         if (newstime>=2018-1-1 || !err){
-            res.send(fakenews);
+            res.send(news);
         }else{
             res.sendStatus(500);
         }
@@ -163,5 +191,6 @@ module.exports.getinfoByUsername = getinfoByUsername;
 //News
 module.exports.allNews = allNews;
 module.exports.createNews = createNews;
+module.exports.addNews = addNews;
 module.exports.findOneCategoryNews = findOneCategoryNews;
 module.exports.getNewestNews = getNewestNews;

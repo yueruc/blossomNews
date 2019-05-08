@@ -15,6 +15,7 @@ router.get('/users/:username', controller.getinfoByUsername);
 //Display news
 router.post('/news', controller.createNews);
 router.get('/news/all', controller.allNews);
+router.get('/addnews', controller.addNews);
 router.get('/:category', controller.findOneCategoryNews);
 router.get('/newest/:dates', controller.getNewestNews);
 
