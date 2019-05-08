@@ -12,7 +12,7 @@ router.get('/users/:username', controller.getinfoByUsername);
 //Display news
 router.post('/news', controller.createNews);
 router.get('/news/all', controller.allNews);
-router.get('/category/:category', controller.findOneNews);
+router.get('/:category', controller.findOneNews);
 router.get('/newest/:dates', controller.getNewestNews);
 
 
