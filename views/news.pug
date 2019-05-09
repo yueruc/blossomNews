@@ -7,7 +7,8 @@ block content
         div.single-news-container
             each onenews in news
                 div.politics-grid-news
-                    p.politics-news-font #{onenews.description}
+                    p.politics-news-font 
+                    a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
                 </div>      
         </div>
     </div>

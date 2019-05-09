@@ -162,6 +162,19 @@ var findOneCategoryNews = function(req, res) {
     });
 };
 
+//find news by category
+var findUrl = function(req, res) {
+    var newsdescription = req.params.description;
+    var newscat = req.params.category;
+    News.find({category: newscat, description:newsdescription}, function(err, thenews) {
+        if (err) {
+            res.send("No matching Found!");
+        }else{
+            res.redirect(thenews[0].url);
+        }
+    });
+};
+
 
 
 //get newest news
@@ -193,4 +206,5 @@ module.exports.allNews = allNews;
 module.exports.createNews = createNews;
 module.exports.addNews = addNews;
 module.exports.findOneCategoryNews = findOneCategoryNews;
+module.exports.findUrl = findUrl;
 module.exports.getNewestNews = getNewestNews;
