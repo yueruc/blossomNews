@@ -25,7 +25,9 @@ Function achieved: Selecting category and displaying corresponding news (fake)
 
 
 //Deliverable 4 MainPage: "localhost:3000/"
-(changed one: all html files changed to pug files)
 
-"REMEMBER TO "NPM INSTALL PUG" FIRST !!!!!!"
+How to run the file:
+
+1: Run npm install in the repo folder
+2: Type in "localhost3000" in your browser
 ....
