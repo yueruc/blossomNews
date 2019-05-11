@@ -18,7 +18,10 @@ router.get('/news/all', controller.allNews);
 router.get('/addnews', controller.addNews);
 router.get('/:category', controller.findOneCategoryNews);
 router.get('/:category/:description', controller.findUrl);
-router.get('/newest/:dates', controller.getNewestNews);
+//router.get('/newest/:dates', controller.getNewestNews);
+
+//interacting with news
+
 
 
 

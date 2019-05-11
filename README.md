@@ -26,6 +26,8 @@ Function achieved: Selecting category and displaying corresponding news (fake)
 
 //Deliverable 4 MainPage: "localhost:3000/"
 
+problem occured in using jQuery, no respond when click on the red heart
+
 How to run the file:
 
 1: Run npm install in the repo folder
