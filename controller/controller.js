@@ -3,6 +3,9 @@ const User = mongoose.model('users');
 const News = mongoose.model('news');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('abf08a911e534e629682c3098dc1b9ca');
+var session = require('express-session');
+var identityKey = 'skey';
+
 
 
 //the main Page
@@ -43,9 +46,22 @@ let allUsers = function(req, res) {
 };
 
 let login = function(req,res){
-    res.render('login',{
-        title: "login"
-    });
+    var loginUser = session.loginUser;
+    var isLogined = !!loginUser;
+
+    if(isLogined){
+        res.render('logined',{
+            title: "loginned",
+            name: loginUser || ''
+        });
+    }
+    else{
+        res.render('login',{
+            title: "login"
+        });
+    }
+    
+    
 };
 
 
@@ -56,17 +72,33 @@ let checkUser = function(req, res){
 
     User.findOne({username: userName, password: passWord}, function(err, user){
         if(!err){
+
+            session.loginUser = userName;
             if(user){
-                res.send("Successfully LogIn");
+                res.render('index',{
+                    title: "BlossomNews"
+                });
             }else{
-                res.send("Fail to LogIn");
+                var loginUser = session.loginUser;
+                res.render('login',{
+                    title: "login",
+                    isLogined: !!loginUser,
+                    name: loginUser || ''
+                });
             }
+            
+            
         }else{
             res.sendStatus(400);
         }
-        
     });
+}
 
+
+var logout = function(req, res, next){
+	session.loginUser = null;
+    res.clearCookie(identityKey);
+    res.redirect('/');
 }
 
 
@@ -81,6 +113,7 @@ let getinfoByUsername = function(req, res) {
         }
     });
 };
+
 
 
 
@@ -133,8 +166,8 @@ let addNews = function(req, res){
                     "id": newsArray[i].id,
                     "description": newsArray[i].description,
                     "url": newsArray[i].url,
-                    "category": newsArray[i].category
-                    //"dates": new.dates
+                    "category": newsArray[i].category,
+                    "dates": newsArray[i].dates
                 }
             );
             news.save(function(err, newnews) {
@@ -153,7 +186,6 @@ var findOneCategoryNews = function(req, res) {
         if (err) {
             res.send("No matching Found!");
         }else{
-            //res.send(fakenews);
             res.render('news', {
                 title: newscategory,
                 news: news
@@ -162,7 +194,7 @@ var findOneCategoryNews = function(req, res) {
     });
 };
 
-//find news by category
+//check news by url
 var findUrl = function(req, res) {
     var newsdescription = req.params.description;
     var newscat = req.params.category;
@@ -176,35 +208,55 @@ var findUrl = function(req, res) {
 };
 
 
+//update liked news for users
+// let updateLikedNews = function(req, res){
+//     var newsitem = {
+//         "id": req.body.id, 
+//         "url": req.body.url, 
+//         "catagory":req.body.catagory
+//     }
+//     User.updateOne({})
+
+
+// }
 
 //get newest news
-var getNewestNews = function(req, res) {
-    var newstime = req.params.dates;
-    News.find({dates:newstime}, function(err, news){
-        if (newstime>=2018-1-1 || !err){
-            res.send(news);
-        }else{
-            res.sendStatus(500);
-        }
+//var getNewestNews = function (req, res) {
+    //var newstime = req.params.dates;
+    //News.find({ dates: newstime }, function (err, news) {
+        //if (newstime >= 2018 - 1 - 1 || !err) {
+            //res.send(news);
+        //} else {
+            //res.sendStatus(500);
+        //}
 
-    });
+    //});
 
-}
+//};
 
+
+//function like (use jQuery, but no-responding, donno why)
+(function($){
+    $(".like").click(function () {
+        $(this).toggleClass('cs');                
+    })
+});
 
 
 module.exports.mainPage = mainPage;
 
 //user
 module.exports.login = login;
+module.exports.logout = logout;
 module.exports.createAdmin = createAdmin;
 module.exports.allUsers = allUsers;
 module.exports.checkUser = checkUser;
 module.exports.getinfoByUsername = getinfoByUsername;
+
 //News
 module.exports.allNews = allNews;
 module.exports.createNews = createNews;
 module.exports.addNews = addNews;
 module.exports.findOneCategoryNews = findOneCategoryNews;
 module.exports.findUrl = findUrl;
-module.exports.getNewestNews = getNewestNews;
+//module.exports.getNewestNews = getNewestNews;

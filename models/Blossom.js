@@ -16,7 +16,8 @@ const userSchema = mongoose.Schema(
     {
         username: String,
         password: String,
-        preference: [String]
+        preference: [String],
+        likedNews: [{"id":String, "url": String, "catagory": String}]
     }
 );
 

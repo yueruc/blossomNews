@@ -1,15 +1,15 @@
 extends default
 
 block content
-
     div.arts-news-title-container
-        img(src='static/images/art/art01.jpg' alt='art' width='100%')   
-        div.single-news-container
-            each onenews in news
-                div.politics-grid-news
-                    p.politics-news-font 
-                    a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
-                </div>      
-        </div>
-    </div>
+        img(src='static/images/art/art01.jpg' alt='art' width='100%')
+        p.category-title #{news[0].category}
 
+    div.container
+        each onenews in news
+            .grid-news
+                p.like(method='POST' action='/:category')
+                    a(href= `./${onenews.category}`) &#10084;
+                p.category-news-font 
+                    a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
+            
