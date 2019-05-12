@@ -257,27 +257,25 @@
     margin-left: 3%;
     display: inline-block;
     width: 30%;
-    height: 23%;
-    margin-top: 5%;
+    height: 25%;
+    margin-top: 10%;
     border-radius: 5%;
 }
-
 .category-news-font {
     font-weight: 600;
     line-height: 1.2em;
     color: black;
     font-size: 10px;
     font-family: 'HelveticaNeue';
-    display: inline-block;
     text-align: left;
-    position: absolute;
     position: relative;
-    top: 104%;
+    top: 66%;
+    text-decoration: none;
 }
 
 .container{
     width: 90%;
-    height: 1000px;
+    height: 800px;
     margin-left: 5%;
 }
 
@@ -336,6 +334,11 @@
     color:rgb(252, 252, 252);
 }
 
-
-
-
+.category-news-font:hover{
+    color:blue;
+    display:block;
+    text-decoration: none;
+}
+.grid-news p{
+    text-decoration: none;
+}
