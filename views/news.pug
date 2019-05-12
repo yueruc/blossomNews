@@ -8,8 +8,15 @@ block content
     div.container
         each onenews in news
             .grid-news
-                p.like(method='POST' action='/:category')
-                    a(href= `./${onenews.category}`) &#10084;
+                .dislike                                                                        
                 p.category-news-font 
                     a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
-            
+
+    script(type='text/javascript', src='http://libs.baidu.com/jquery/1.9.1/jquery.min.js')
+    script(type='text/javascript').
+
+        $(function () {            
+            $(".dislike").click(function () {
+                $(this).toggleClass('like');                
+            })
+        })
