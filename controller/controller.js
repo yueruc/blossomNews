@@ -60,8 +60,8 @@ let login = function(req,res){
             title: "login"
         });
     }
-    
-    
+
+
 };
 
 
@@ -86,8 +86,8 @@ let checkUser = function(req, res){
                     name: loginUser || ''
                 });
             }
-            
-            
+
+
         }else{
             res.sendStatus(400);
         }
@@ -96,7 +96,7 @@ let checkUser = function(req, res){
 
 
 var logout = function(req, res, next){
-	session.loginUser = null;
+    session.loginUser = null;
     res.clearCookie(identityKey);
     res.redirect('/');
 }
@@ -121,7 +121,7 @@ let getinfoByUsername = function(req, res) {
 
 // first create news
 let createNews = function(req, res) {
-  
+
     let news = new News(
         {
             "id": req.body.id,
@@ -132,7 +132,7 @@ let createNews = function(req, res) {
             "imageurl": req.body.imageurl
         }
     );
-    
+
     news.save(function(err, newNews) {
         if (!err) {
             res.json(newNews);
@@ -208,16 +208,6 @@ var findUrl = function(req, res) {
         }
     });
 };
-
-
-
-
-
-(function($){
-    $(".like").click(function () {
-        $(this).toggleClass('cs');               
-    })
-});
 
 
 module.exports.mainPage = mainPage;
