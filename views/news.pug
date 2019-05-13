@@ -2,14 +2,14 @@ extends default
 
 block content
     div.arts-news-title-container
-        img(src='static/images/art/art01.jpg' alt='art' width='100%')
+        img(src='static/images/news/news-1.jpg' alt='art' width='100%')
         p.category-title #{title}
 
     div.container
         each onenews in news
             .grid-news
-                img(src= onenews.imageurl alt='art' width='100%')   
-                .dislike                                                                    
+                .dislike
+                img(src= onenews.imageurl alt='art' width='100%')                                                                       
                 p.category-news-font 
                     a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
                     
