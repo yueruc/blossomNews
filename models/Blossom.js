@@ -7,7 +7,8 @@ const newsSchema = mongoose.Schema(
         description: String,
         url: String,
         category: String,
-        dates: Date
+        dates: Date,
+        imageurl: String
     }
 );
 
@@ -17,7 +18,6 @@ const userSchema = mongoose.Schema(
         username: String,
         password: String,
         preference: [String],
-        likedNews: [{"id":String, "url": String, "catagory": String}]
     }
 );
 

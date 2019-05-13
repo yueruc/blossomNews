@@ -3,20 +3,24 @@ extends default
 block content
     div.arts-news-title-container
         img(src='static/images/art/art01.jpg' alt='art' width='100%')
-        p.category-title #{news[0].category}
+        p.category-title #{title}
 
     div.container
         each onenews in news
             .grid-news
-                .dislike                                                                        
+                img(src= onenews.imageurl alt='art' width='100%')   
+                .dislike                                                                    
                 p.category-news-font 
                     a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
+                    
+                
+    
 
     script(type='text/javascript', src='http://libs.baidu.com/jquery/1.9.1/jquery.min.js')
     script(type='text/javascript').
 
         $(function () {            
             $(".dislike").click(function () {
-                $(this).toggleClass('like');                
+                $(this).toggleClass('like');
             })
         })
