@@ -1,35 +1,59 @@
-# blossom001
+# INFO30005_BlossomNews
+
+## Group: Blossom
+
+## Group Member: Yiming Ren, Yueru Cheng, Tianyu Zhang, Shican Wu
+
+## Introduction:
+This is a web application that is used for poeple who enjoy reading news under different categories, and remember their liked news by just cliking the heart icon.
+
+## Main Functions:
+
+_ "Log in": A user can log in to our system using one out of four combination (username,password) we provided. It will go to the Main Page if the user successfully login in. If the login is failed, it will still stay in the Login Page. 
+
+_ "Log in session": After the user logged in, system will remember his log-in status, thus, when clicking on the log in button again, he will receive a message "Already Logged in" and an option to log out.
+
+_ "Find News by Category": When poeple are browsing our website, their will be six main categories available for them to browse, and under each category there are nine pieces of news fetching directly from an online news api. When user click on each news, it would send them directly to the news webpage.
+
+_ "Like News": When user is browsing the website, a grey heart shape will appear at the top left corner of each piece of news. When user clicks on that, it will turn red.
+
+## Routes:
+
+_ "Login": `/login`
+***
+Example: https://blossomnews.herokuapp.com/login
+
+Provided combination (username & password): yimingr  900760
+                                            yueruc   900709
+                                            shicanWu 900940
+                                            tianyuz6 901056
+
+_ "News Category": `/:category`
+***
+Example: https://blossomnews.herokuapp.com/entertainment
+
+_ "Like News": JQuery used in this function, no routes required.
 
 
-//Deliverable 2 MainPage: "localhost:3000/"
+## Reference to source code:
 
-Task 1: Using "localhost:3000/users/all" to get all users infomation
+_ "Login":
+`controller/controller.js`
+`/views/login.pug`
+`/public/style.css`
 
-Task 2: Using "localhost:3000/news/all" to get all faked news
+_ "Login Session":
+`controller/controller.js`
+`/views/logined.pug`
+`/public/style.css`
 
-Task 3: Using "localhost:3000/category/:category" to get all categories (Example: localhost:3000/category/technology)
+_ "News Category":
+`/controller/controller.js`
+`/views/default.pug`
+`/views/index.pug`
+`/views/news.pug`
+`/public/style.css`
 
-Task 4: Using "localhost:3000/newest/:dates" to get news from 2018-01-01 and later on (Example: localhost:3000/newest/2019-02-21T13:00:00.000+00:00)
-
-Task 5: Using "localhost:3000/users" to push user into database
-
-Task 6: Using "localhost:3000/users/:username" to get user infomation by username (Example: localhost:3000/users/yueruc)
-
-Task 7: Using username and password to check whether the user is sucessful logIn (Post)
-
-//Deliverable 3 MainPage: "localhost:3000/"
-
-The aethetic design of the website 
-
-Function achieved: Selecting category and displaying corresponding news (fake) 
-
-
-//Deliverable 4 MainPage: "localhost:3000/"
-
-problem occured in using jQuery, no respond when click on the red heart
-
-How to run the file:
-
-1: Run npm install in the repo folder
-2: Type in "localhost3000" in your browser
-....
+_ "Like News"
+`/views/news.pug`
+`/public/style.css`

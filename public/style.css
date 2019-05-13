@@ -212,7 +212,7 @@
 }
 
 
-/* Entertainment page add-on*/
+/* all-news page add-on*/
 
 .news-title-container{
     width: 100%;
@@ -227,7 +227,7 @@
     line-height:40px;
     display: block;
     text-align: center;
-    padding-top: 30%;
+    padding-top: 50%;
 }
 
 
@@ -249,9 +249,8 @@
 
 
 
-/* Politics Page add on */
+/* grid-news general add on */
 .grid-news {
-    background: url(static/images/politics/politics02.jpg) no-repeat;
     position: center;
     background-size: cover;
     margin-left: 3%;
@@ -269,7 +268,7 @@
     font-family: 'HelveticaNeue';
     text-align: left;
     position: relative;
-    top: 66%;
+    top: 75%;
     text-decoration: none;
 }
 
@@ -325,15 +324,22 @@
 
 
 /*like button*/
-.like{ 
-    font-size:40px;  
-    color:rgb(255, 2, 2); 
+.dislike{
+    width: 50px;
+    height: 50px;
+    background: url(static/images/like/dislike.png) no-repeat;
+    background-size: cover;
+    margin-left: 2%;
     cursor:pointer;
 }
-.cs{
-    color:rgb(252, 252, 252);
+.like{
+    background: url(static/images/like/like.png) no-repeat;
+    background-size: cover;
 }
 
+
+
+/*News font*/
 .category-news-font:hover{
     color:blue;
     display:block;

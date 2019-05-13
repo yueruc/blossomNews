@@ -128,7 +128,8 @@ let createNews = function(req, res) {
             "description": req.body.description,
             "url": req.body.url,
             "category": req.body.category,
-            "dates": req.body.dates
+            "dates": req.body.dates,
+            "imageurl": req.body.imageurl
         }
     );
     
@@ -167,7 +168,8 @@ let addNews = function(req, res){
                     "description": newsArray[i].description,
                     "url": newsArray[i].url,
                     "category": newsArray[i].category,
-                    "dates": newsArray[i].dates
+                    "dates": newsArray[i].dates,
+                    "imageurl": newsArray[i].imageurl
                 }
             );
             news.save(function(err, newnews) {
@@ -208,37 +210,12 @@ var findUrl = function(req, res) {
 };
 
 
-//update liked news for users
-// let updateLikedNews = function(req, res){
-//     var newsitem = {
-//         "id": req.body.id, 
-//         "url": req.body.url, 
-//         "catagory":req.body.catagory
-//     }
-//     User.updateOne({})
 
 
-// }
 
-//get newest news
-//var getNewestNews = function (req, res) {
-    //var newstime = req.params.dates;
-    //News.find({ dates: newstime }, function (err, news) {
-        //if (newstime >= 2018 - 1 - 1 || !err) {
-            //res.send(news);
-        //} else {
-            //res.sendStatus(500);
-        //}
-
-    //});
-
-//};
-
-
-//function like (use jQuery, but no-responding, donno why)
 (function($){
     $(".like").click(function () {
-        $(this).toggleClass('cs');                
+        $(this).toggleClass('cs');               
     })
 });
 
@@ -259,4 +236,3 @@ module.exports.createNews = createNews;
 module.exports.addNews = addNews;
 module.exports.findOneCategoryNews = findOneCategoryNews;
 module.exports.findUrl = findUrl;
-//module.exports.getNewestNews = getNewestNews;
