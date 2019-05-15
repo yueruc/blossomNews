@@ -72,9 +72,8 @@ let checkUser = function(req, res){
 
     User.findOne({username: userName, password: passWord}, function(err, user){
         if(!err){
-
-            session.loginUser = userName;
             if(user){
+                session.loginUser = userName;
                 res.render('index',{
                     title: "BlossomNews"
                 });

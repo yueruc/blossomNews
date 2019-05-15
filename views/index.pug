@@ -10,15 +10,18 @@ block content
             li(data-target='#demo' data-slide-to='2')
         .carousel-inner
             .carousel-item.active
-                img(src='static/images/main-page/sport.png' alt='Los Angeles' width='1100' height='500')
+                a(href='/sports')
+                    img(src='static/images/main-page/sport.png' alt='Los Angeles' width='1100' height='500')
                 .carousel-caption
                     p.title Sports News
             .carousel-item
-                img(src='static/images/main-page/entertainment.png' alt='Chicago' width='1100' height='500')
+                a(href='/entertainment')
+                    img(src='static/images/main-page/entertainment.png' alt='Chicago' width='1100' height='500')
                 .carousel-caption
                     p.title Arts News
             .carousel-item
-                img(src='static/images/main-page/travel-1.png' alt='New York' width='1100' height='500')
+                a(href='/travel')
+                    img(src='static/images/main-page/travel-1.png' alt='New York' width='1100' height='500')
                 .carousel-caption
                     p.title Travel News
         a.carousel-control-prev(href='#demo' data-slide='prev')

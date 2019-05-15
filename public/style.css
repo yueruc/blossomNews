@@ -192,7 +192,7 @@
     display: block;
     position: relative;
     background-color:grey;
-    margin-top: 48%;
+    margin-top: 20%;
 }
 .footer p{
     width:252px;
@@ -260,15 +260,21 @@
     margin-top: 10%;
     border-radius: 5%;
 }
+.grid-news img{
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+    margin-top: -20%;
+}
 .category-news-font {
     font-weight: 600;
     line-height: 1.2em;
     color: black;
-    font-size: 10px;
+    font-size: 12px;
     font-family: 'HelveticaNeue';
     text-align: left;
     position: relative;
-    top: 10%;
+    top: 3%;
     text-decoration: none;
 }
 
@@ -329,8 +335,10 @@
     height: 50px;
     background: url(static/images/like/dislike.png) no-repeat;
     background-size: cover;
-    margin-left: 2%;
-    cursor:pointer;
+    margin-left: 0.5%;
+    margin-top: -5%;
+    position: absolute;
+    cursor: pointer;
 }
 .like{
     background: url(static/images/like/like.png) no-repeat;
