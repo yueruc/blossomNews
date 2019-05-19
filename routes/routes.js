@@ -9,6 +9,7 @@ router.get('/', controller.mainPage);
 router.get('/users/all', controller.allUsers);
 router.post('/users', controller.createAdmin);
 router.get('/login', controller.login);
+router.get('/signUp', controller.signUp);
 router.post('/login', controller.checkUser);
 router.get('/logout', controller.logout);
 router.get('/users/:username', controller.getinfoByUsername);

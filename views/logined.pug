@@ -2,7 +2,12 @@ extends default
 
 block content
 
-    div
-        p Already Logined!
-            a(href='/logout') 
+    p.category-title Profile
+    .user-container
+        .user-profile
+            div.user-image
+            p.logined-font #{name}
+            a(href='/logout')
                 button.btn.btn-primary  Log out
+        .liked-news-container
+            p.logined-font Liked News

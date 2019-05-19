@@ -52,7 +52,15 @@
 }
 
 
-.user{
+.login{
+    width: 50px;
+    display: inline-block;
+    position: absolute;
+    top: 6%;
+    right: 5%;
+}
+
+.signup{
     width: 50px;
     display: inline-block;
     position: absolute;
@@ -355,4 +363,69 @@
 }
 .grid-news p{
     text-decoration: none;
+}
+
+.sign-up-indicator{
+    float:right;
+    font-size: 10px;
+}
+.signup-form{
+    width: 50%;
+    height: 600px;
+    background-color: white;
+    display: block;
+    margin-bottom: 5%;
+    margin-left: 25%;
+    position: absolute;
+    top: 45%;
+    box-shadow: 10px 10px 15px 0px rgba(196,196,196,0.5);
+}
+.signup-submit{
+    width: 30%;
+    margin-left: 35%;
+}
+.checkbox{
+    margin-left: 10%;
+}
+.signup-font{
+    font-size: 15px;
+    color: grey;
+}
+
+.user-image{
+    background: url("static/images/login/coconut-trees-couple-daylight-2174656.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+}
+
+.logined-font{
+    font-size: 25px;
+    font-family: fantasy;
+    margin:0;
+}
+.user-profile{
+    width: 30%;
+    height: 300px;
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+}
+.user-container{
+    width:90%;
+    height: 300px;
+    display: inline-block;
+    margin-left: 5%;
+}
+.liked-news-container{
+    height: 300px;
+    width: 65%;
+    display: inline-block;
+    text-align: left;
+    margin-top: 0;
+    position: absolute;
+    margin-left: 5%;
 }
