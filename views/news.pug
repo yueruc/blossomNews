@@ -10,9 +10,10 @@ block content
             .grid-news
                 .dislike
                 img(src= onenews.imageurl alt='art' width='100%')                                                                       
-                p.category-news-font 
-                    a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
-                
+                div.news-font-container
+                    p.category-news-font
+                        a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
+                        .comment.container
     
 
     script(type='text/javascript', src='http://libs.baidu.com/jquery/1.9.1/jquery.min.js')

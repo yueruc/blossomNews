@@ -230,6 +230,13 @@
     padding-top: 50%;
 }
 
+.news-font-container{
+    width: 300px;
+    height: 100px;
+    display: block;
+    position: absolute;
+}
+
 
 .news-title-container p{
     font-size: 100px;
@@ -281,6 +288,12 @@
 .container{
     width: 90%;
     height: 800px;
+    margin-left: 5%;
+}
+
+.comment-container{
+    width: 333px;
+    height: 70px;
     margin-left: 5%;
 }
 
