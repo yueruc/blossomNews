@@ -5,6 +5,7 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('abf08a911e534e629682c3098dc1b9ca');
 var session = require('express-session');
 var identityKey = 'skey';
+const assert = require('assert');
 
 
 
@@ -21,7 +22,8 @@ let createAdmin = function(req, res) {
         {
             "username": req.body.username,
             "password": req.body.password,
-            "preference": req.body.preference
+            "preference": req.body.preference,
+            "likedNews": req.body.likedNews
         }
     );
 
@@ -120,10 +122,6 @@ let getinfoByUsername = function(req, res) {
 };
 
 
-
-
-
-
 // first create news
 let createNews = function(req, res) {
 
@@ -215,6 +213,49 @@ var findUrl = function(req, res) {
 };
 
 
+var likedNews = function(req, res){
+
+  
+    
+    var loginUser = session.loginUser;
+    var isLogined = !!loginUser;
+    console.log("hah");
+
+    var item = {
+        likedNews: [{
+            "news_id": req.params.newsid,
+            "news_category": req.params.category,
+            "news_description": req.params.description
+        }]
+    }
+
+    if(isLogined){
+        console.log("is loged");
+        User.updateOne({"username": loginUser}, {$set: item}, function(err, result){
+            assert.equal(null, err);
+            console.log("inserted");
+
+            var newscategory = req.params.category;
+            News.find({category:newscategory}, function(err, news) {
+                if (err) {
+                    res.send("No matching Found!");
+                }else{
+                    res.render('news', {
+                        title: newscategory,
+                        news: news
+                    });
+                }
+            });
+        });
+    }
+    else{
+        res.render('login',{
+            title: "login"
+        });
+    }
+};
+
+
 module.exports.mainPage = mainPage;
 
 //user
@@ -232,3 +273,6 @@ module.exports.createNews = createNews;
 module.exports.addNews = addNews;
 module.exports.findOneCategoryNews = findOneCategoryNews;
 module.exports.findUrl = findUrl;
+
+//
+module.exports.likedNews = likedNews;

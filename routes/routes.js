@@ -21,6 +21,9 @@ router.get('/addnews', controller.addNews);
 router.get('/:category', controller.findOneCategoryNews);
 router.get('/:category/:description', controller.findUrl);
 
+//interaction
+router.get('/:newsid/:category/:description', controller.likedNews);
+
 
 
 
