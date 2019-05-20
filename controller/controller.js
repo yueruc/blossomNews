@@ -64,6 +64,12 @@ let login = function(req,res){
 
 };
 
+let signUp = function(req,res){
+    res.render('signUp',{
+        title: "signUp"
+    });
+};
+
 
 //check logIn system with username & password
 let checkUser = function(req, res){
@@ -212,6 +218,7 @@ var findUrl = function(req, res) {
 module.exports.mainPage = mainPage;
 
 //user
+module.exports.signUp = signUp;
 module.exports.login = login;
 module.exports.logout = logout;
 module.exports.createAdmin = createAdmin;

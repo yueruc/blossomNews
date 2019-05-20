@@ -1,0 +1,36 @@
+extends default
+
+block content
+        form.login-background(action='/action_page.php')
+            div.signup-form
+                div.login-container
+                    h1.login-title Sign Up
+                    p.signup-font Please fill in this form to create an account.
+                    hr
+                    div.form-group
+                        label(for='username') username
+                        input.form-control(type='text' placeholder='username' name='username' required='')
+                    div.form-group
+                        label(for='psw') Password
+                        input.form-control(type='password' placeholder='Enter Password' name='psw' required='')
+                    div.form-group
+                        label(for='psw-repeat') Repeat Password
+                        input.form-control(type='password' placeholder='Repeat Password' name='psw-repeat' required='')
+                    div.form-group
+                        p.signup-font Please select at least 3 categories of your preference.
+                        hr
+                        input.checkbox(type='checkbox' name='vehicle1' value='Bike')
+                        |  Entertainment
+                        input.checkbox(type='checkbox' name='vehicle2' value='Car')
+                        |  Science
+                        input.checkbox(type='checkbox' name='vehicle3' value='Boat')
+                        |  Sport
+                        br
+                        input.checkbox(type='checkbox' name='vehicle1' value='Bike')
+                        |  Health
+                        input.checkbox(type='checkbox' name='vehicle2' value='Car')
+                        |  Technology
+                        input.checkbox(type='checkbox' name='vehicle3' value='Boat')
+                        |  Business
+
+                    button.btn.btn-primary.signup-submit(type='submit') Sign Up
