@@ -8,20 +8,6 @@ block content
     div.container
         each onenews in news
             .grid-news
-                .dislike
-                a(href = `./${onenews.id}/${onenews.category}/${onenews.description}`)
-                    button.dislike #{Liked}
-                img(src= onenews.imageurl alt='art' width='100%')                                                                       
-                p.category-news-font 
-                    a(href=`./${onenews.category}/${onenews.description}`) #{onenews.description}
-                   
-    
-
-    script(type='text/javascript', src='http://libs.baidu.com/jquery/1.9.1/jquery.min.js')
-    script(type='text/javascript').
-
-        $(function () {            
-            $(".dislike").click(function () {
-                $(this).toggleClass('like');
-            })
-        })
+                a(href =`/newsdetail/${onenews.category}/${onenews._id}`)
+                    img(src= onenews.imageurl alt='art' width='100%')
+                    p.category-news-font #{onenews.description}

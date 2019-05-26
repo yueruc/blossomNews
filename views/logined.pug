@@ -11,3 +11,7 @@ block content
                 button.btn.btn-primary  Log out
         .liked-news-container
             p.logined-font Liked News
+            each news in likedNews
+                p #{news.id}
+                p #{news.description}
+                img(src= news.imageurl alt='likedNews' width='15%')       

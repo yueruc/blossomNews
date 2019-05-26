@@ -47,67 +47,6 @@ let allUsers = function(req, res) {
     });
 };
 
-let login = function(req,res){
-    var loginUser = session.loginUser;
-    var isLogined = !!loginUser;
-
-    if(isLogined){
-        res.render('logined',{
-            title: "loginned",
-            name: loginUser || ''
-        });
-    }
-    else{
-        res.render('login',{
-            title: "login"
-        });
-    }
-
-
-};
-
-let signUp = function(req,res){
-    res.render('signUp',{
-        title: "signUp"
-    });
-};
-
-
-//check logIn system with username & password
-let checkUser = function(req, res){
-    var userName = req.body.username;
-    var passWord = req.body.password;
-
-    User.findOne({username: userName, password: passWord}, function(err, user){
-        if(!err){
-            if(user){
-                session.loginUser = userName;
-                res.render('index',{
-                    title: "BlossomNews"
-                });
-            }else{
-                var loginUser = session.loginUser;
-                res.render('login',{
-                    title: "login",
-                    isLogined: !!loginUser,
-                    name: loginUser || ''
-                });
-            }
-
-
-        }else{
-            res.sendStatus(400);
-        }
-    });
-}
-
-
-var logout = function(req, res, next){
-    session.loginUser = null;
-    res.clearCookie(identityKey);
-    res.redirect('/');
-}
-
 
 //check one userinfomation by username
 let getinfoByUsername = function(req, res) {
@@ -123,28 +62,28 @@ let getinfoByUsername = function(req, res) {
 
 
 // first create news
-let createNews = function(req, res) {
+// let createNews = function(req, res) {
 
-    let news = new News(
-        {
-            "id": req.body.id,
-            "description": req.body.description,
-            "url": req.body.url,
-            "category": req.body.category,
-            "dates": req.body.dates,
-            "imageurl": req.body.imageurl
-        }
-    );
+//     let news = new News(
+//         {
+//             "id": req.body.id,
+//             "description": req.body.description,
+//             "url": req.body.url,
+//             "category": req.body.category,
+//             "dates": req.body.dates,
+//             "imageurl": req.body.imageurl
+//         }
+//     );
 
-    news.save(function(err, newNews) {
-        if (!err) {
-            res.json(newNews);
-        } else {
-            res.sendStatus(400);
-        }
-    });
+//     news.save(function(err, newNews) {
+//         if (!err) {
+//             res.json(newNews);
+//         } else {
+//             res.sendStatus(400);
+//         }
+//     });
 
-};
+// };
 
 //check all the news
 let allNews = function(req, res) {
@@ -157,122 +96,58 @@ let allNews = function(req, res) {
     });
 };
 
-let addNews = function(req, res){
-
-    newsapi.v2.sources({
-        category: 'health'
-    }).then(response => {
-        let newsArray = response.sources;
-        console.log(response.sources);
-        for (let i = 0; i < 9; i++) {
-            let news = new News(
-                {
-                    "id": newsArray[i].id,
-                    "description": newsArray[i].description,
-                    "url": newsArray[i].url,
-                    "category": newsArray[i].category,
-                    "dates": newsArray[i].dates,
-                    "imageurl": newsArray[i].imageurl
-                }
-            );
-            news.save(function(err, newnews) {
-                if (err) {
-                    res.sendStatus(400);
-                }
-            });
-        }
-    });
-};
-
-//find news by category
-var findOneCategoryNews = function(req, res) {
-    var newscategory = req.params.category;
-    News.find({category:newscategory}, function(err, news) {
-        if (err) {
-            res.send("No matching Found!");
-        }else{
-            res.render('news', {
-                title: newscategory,
-                news: news
-            });
-        }
-    });
-};
-
-//check news by url
-var findUrl = function(req, res) {
-    var newsdescription = req.params.description;
-    var newscat = req.params.category;
-    News.find({category: newscat, description:newsdescription}, function(err, thenews) {
-        if (err) {
-            res.send("No matching Found!");
-        }else{
-            res.redirect(thenews[0].url);
-        }
-    });
-};
-
 
 var likedNews = function(req, res){
 
-  
-    
     var loginUser = session.loginUser;
     var isLogined = !!loginUser;
-    console.log("hah");
 
-    var item = {
-        likedNews: [{
-            "news_id": req.params.newsid,
-            "news_category": req.params.category,
-            "news_description": req.params.description
-        }]
-    }
 
     if(isLogined){
-        console.log("is loged");
-        User.updateOne({"username": loginUser}, {$set: item}, function(err, result){
-            assert.equal(null, err);
-            console.log("inserted");
+       
 
-            var newscategory = req.params.category;
-            News.find({category:newscategory}, function(err, news) {
-                if (err) {
-                    res.send("No matching Found!");
-                }else{
-                    res.render('news', {
-                        title: newscategory,
-                        news: news
+        User.findOne({username: loginUser}, function(err, user){
+            if (err) throw err;
+            News.findOne({_id: req.params.objectid}, function(err, news_item){
+                if (err) throw err;
+
+                news_item.save(function(err){
+                    if (err) throw err;
+                    user.likedNews.push(news_item);
+    
+                    user.save(function(err){
+                        if (err) throw err;
+    
+                        res.redirect(`/newsdetail/${req.params.category}/${req.params.objectid}`);
                     });
-                }
+    
+                });
             });
+
+            
+    
         });
     }
     else{
-        res.render('login',{
-            title: "login"
-        });
+        // res.render('login',{
+        //     title: "login"
+        // });
+        res.redirect('/login');
     }
 };
+
+
 
 
 module.exports.mainPage = mainPage;
 
 //user
-module.exports.signUp = signUp;
-module.exports.login = login;
-module.exports.logout = logout;
 module.exports.createAdmin = createAdmin;
 module.exports.allUsers = allUsers;
-module.exports.checkUser = checkUser;
 module.exports.getinfoByUsername = getinfoByUsername;
 
 //News
 module.exports.allNews = allNews;
-module.exports.createNews = createNews;
-module.exports.addNews = addNews;
-module.exports.findOneCategoryNews = findOneCategoryNews;
-module.exports.findUrl = findUrl;
 
-//
+//interaction
 module.exports.likedNews = likedNews;
