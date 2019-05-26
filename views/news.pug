@@ -8,7 +8,7 @@ block content
     div.container
         each onenews in news
             .grid-news
-                a(href =`/newsdetail/${onenews.category}/${onenews._id}`)
+                a(href =`/newsdetail/${onenews._id}`)
                     img(src= onenews.imageurl alt='art' width='100%')
                     p.category-news-font #{onenews.description}
 

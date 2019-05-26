@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const News = mongoose.model('news');
+const Comment = mongoose.model('comments');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('abf08a911e534e629682c3098dc1b9ca');
 var session = require('express-session');
-var identityKey = 'skey';
 const assert = require('assert');
 
 
@@ -24,8 +24,7 @@ let createAdmin = function(req, res) {
             "password": req.body.password,
             "preference": req.body.preference,
             "likedNews": req.body.likedNews
-        }
-    );
+        });
 
     user.save(function(err, newUser) {
         if (!err) {
@@ -105,10 +104,10 @@ var likedNews = function(req, res){
 
     if(isLogined){
        
-
         User.findOne({username: loginUser}, function(err, user){
             if (err) throw err;
             News.findOne({_id: req.params.objectid}, function(err, news_item){
+    
                 if (err) throw err;
 
                 news_item.save(function(err){
@@ -117,26 +116,37 @@ var likedNews = function(req, res){
     
                     user.save(function(err){
                         if (err) throw err;
-    
-                        res.redirect(`/newsdetail/${req.params.category}/${req.params.objectid}`);
+                        res.redirect(`/newsdetail/${req.params.objectid}`);
                     });
     
                 });
             });
-
-            
-    
         });
     }
     else{
-        // res.render('login',{
-        //     title: "login"
-        // });
         res.redirect('/login');
     }
 };
 
+var addcomments = function(req, res){
+    var object_id = req.params.news_ojbectid;
+    News.findById(object_id, function(err, the_news){
+        if (err) throw err;
 
+        let comment_item = new Comment({
+            "content": req.body.comment
+        });
+        comment_item.save(function(err){
+                
+            if (err) throw err;
+            the_news.comment.push(comment_item);
+            the_news.save(function(err){
+                if (err) throw err;
+                res.redirect(`/newsdetail/${object_id}`);
+            });
+        });
+    });
+};
 
 
 module.exports.mainPage = mainPage;
@@ -151,3 +161,4 @@ module.exports.allNews = allNews;
 
 //interaction
 module.exports.likedNews = likedNews;
+module.exports.addcomments = addcomments;

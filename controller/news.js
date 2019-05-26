@@ -72,16 +72,15 @@ var findOneCategoryNews = function(req, res) {
 
 var newsdetail = function(req, res) {
     var newscategory = req.params.category;
-    News.findOne({_id:req.params.objectid}, function(err, news) {
-        if (err) {
-            res.send("No matching Found!");
-        }else{
-            res.render('newsdetail', {
-                title: newscategory,
-                eachnews: news
-            });
-        }
-    });
+    News.findOne({_id:req.params.objectid}).
+    populate('comment').
+    exec(function(err, news){
+        res.render('newsdetail', {
+            title: newscategory,
+            eachnews: news,
+            comments: news.comment
+        });
+    })
 };
 
 //check news by url

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 var session = require('express-session');
+var identityKey = 'skey';
 
 let login = function(req,res){
     var loginUser = session.loginUser;
@@ -11,7 +12,6 @@ let login = function(req,res){
         User.findOne({username: loginUser}).
                 populate('likedNews').
                 exec(function(err, user) {
-                //res.json(user);
                 res.render('logined',{
                     title: "loginned",
                     name: loginUser || '',
@@ -46,12 +46,6 @@ let checkUser = function(req, res){
                 
             }else{
                 res.redirect('/login');
-                // var loginUser = session.loginUser;
-                // res.render('login',{
-                //     title: "login",
-                //     isLogined: !!loginUser,
-                //     name: loginUser || ''
-                // });
             }
 
 

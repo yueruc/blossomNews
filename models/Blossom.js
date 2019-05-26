@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const commentSchema = new Schema(
+    {
+        content: String
+    }
+);
+
 //creating Schema for news
 const newsSchema = new Schema(
     {
@@ -9,7 +15,8 @@ const newsSchema = new Schema(
         url: String,
         category: String,
         dates: Date,
-        imageurl: String
+        imageurl: String,
+        comment: [{type: Schema.Types.ObjectId, ref: "comments"}]
     }
 );
 
@@ -23,12 +30,6 @@ const userSchema = new Schema(
     }
 );
 
-// const commentSchema = new Schema(
-//     {
-//         content: String,
-
-//     }
-// );
-
 mongoose.model('users', userSchema);
 mongoose.model('news',newsSchema);
+mongoose.model('comments',commentSchema);

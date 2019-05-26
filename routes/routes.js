@@ -24,11 +24,15 @@ router.get('/news/all', controller.allNews);
 router.post('/news', news.createNews);
 router.get('/addnews', news.addNews);
 router.get('/:category', news.findOneCategoryNews);
-router.get('/newsdetail/:category/:objectid', news.newsdetail);
+router.get('/newsdetail/:objectid', news.newsdetail);
 router.get('/findnews/:objectid', news.findUrl);
 
 //interaction
 router.get('/likednews/:category/:objectid', controller.likedNews);
+
+
+router.post('/addcomment/:category/:news_ojbectid', controller.addcomments);
+//router.get('/addcomment/:ojbectid', controller.);
 
 
 

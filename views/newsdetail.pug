@@ -12,6 +12,15 @@ block content
         img(src = eachnews.imageurl alt='art' width='30%')                                                                   
         p.category-news-font 
             a(href=`/findnews/${eachnews._id}`) #{eachnews.description}
+
+        p Comments
+        each comment in comments
+            p.category-news-font #{comment.content}
+            
+        form(method='POST' action=`/addcomment/${eachnews.category}/${eachnews._id}`)
+            div.form-group
+                input.form-control(type='text' id='comment' placeholder='comment' name='comment')
+            button.btn.btn-primary  Submit
             
     
 
