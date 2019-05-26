@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 //creating Schema for news
-const newsSchema = mongoose.Schema(
+const newsSchema = new Schema(
     {
         id: String,
         description: String,
@@ -13,13 +14,21 @@ const newsSchema = mongoose.Schema(
 );
 
 //create Schema for users
-const userSchema = mongoose.Schema(
+const userSchema = new Schema(
     {
         username: String,
         password: String,
         preference: [String],
+        likedNews: [{type: Schema.Types.ObjectId, ref: "news"}]
     }
 );
+
+// const commentSchema = new Schema(
+//     {
+//         content: String,
+
+//     }
+// );
 
 mongoose.model('users', userSchema);
 mongoose.model('news',newsSchema);
