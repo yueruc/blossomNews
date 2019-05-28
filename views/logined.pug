@@ -1,6 +1,35 @@
-extends default
+doctype html
+html
+    head
+        title #{title}
+        meta(charset='UTF-8')
+        link(rel='stylesheet', href='/style.css')
+        link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+        script(src='http://libs.baidu.com/jquery/1.9.1/jquery.min.js')
+        style.
+            /* Make the image fully responsive */
+            .carousel-inner img {
+                width: 100%;
+                height: 100%;
+            }
 
-block content
+    body
+        block header
+            div.nav
+                a(href='/')
+                    img.logo(src='/static/images/main-page/logo.png' alt='logo')
+                div
+                    input.form-control.mr-sm-2(type='text' placeholder='Search')
+                img.search(src='/static/images/main-page/search.svg')
+
+                a(href='/signUp')
+                    img.signup(src='/static/images/main-page/signup.svg')
+
+                a(href='/login')
+                    img.login(src='/static/images/main-page/login.svg')
 
     p.category-title Profile
     .user-container
@@ -12,6 +41,7 @@ block content
         .liked-news-container
             p.logined-font Liked News
             each news in likedNews
-                p #{news.id}
-                p #{news.description}
-                img(src= news.imageurl alt='likedNews' width='15%')       
+                a(href=`/newsdetail/${news._id}`)
+                    p #{news.id}
+                    p #{news.description}
+                    img(src= news.imageurl alt='likedNews' width='15%')

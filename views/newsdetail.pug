@@ -1,33 +1,31 @@
 extends default
 
 block content
-    div.arts-news-title-container
-        img(src='/static/images/news/news-1.jpg' alt='art' width='100%')
-        p.category-title #{title}
 
     div.container
-        .dislike
-        a(href =`/likednews/${eachnews.category}/${eachnews._id}`)
-            button.dislike #{Liked}
-        img(src = eachnews.imageurl alt='art' width='30%')                                                                   
-        p.category-news-font 
-            a(href=`/findnews/${eachnews._id}`) #{eachnews.description}
+        .comment-image-area
+            a(href =`/likednews/${eachnews.category}/${eachnews._id}`)
+                button.dislike #{Liked}
+            img.comment-image(src = eachnews.imageurl alt='art' width='30%')
+            p.category-news-font.comment-title
+                a(href=`/findnews/${eachnews._id}`) #{eachnews.description}
 
-        p Comments
-        each comment in comments
-            p.category-news-font #{comment.content}
-            
-        form(method='POST' action=`/addcomment/${eachnews.category}/${eachnews._id}`)
-            div.form-group
-                input.form-control(type='text' id='comment' placeholder='comment' name='comment')
-            button.btn.btn-primary  Submit
-            
-    
+        .comment-area
+            p.logined-font Comments
+            each comment in comments
+                p.category-news-font #{comment.content}
+
+            form(method='POST' action=`/addcomment/${eachnews.category}/${eachnews._id}`)
+                div.form-group
+                    input.form-control(type='text' id='comment' placeholder='comment' name='comment')
+                button.btn.btn-primary  Submit
+
+
 
     script(type='text/javascript', src='http://libs.baidu.com/jquery/1.9.1/jquery.min.js')
     script(type='text/javascript').
 
-        $(function () {            
+        $(function () {
             $(".dislike").click(function () {
                 $(this).toggleClass('like');
             })
