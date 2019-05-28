@@ -59,31 +59,6 @@ let getinfoByUsername = function(req, res) {
     });
 };
 
-
-// first create news
-// let createNews = function(req, res) {
-
-//     let news = new News(
-//         {
-//             "id": req.body.id,
-//             "description": req.body.description,
-//             "url": req.body.url,
-//             "category": req.body.category,
-//             "dates": req.body.dates,
-//             "imageurl": req.body.imageurl
-//         }
-//     );
-
-//     news.save(function(err, newNews) {
-//         if (!err) {
-//             res.json(newNews);
-//         } else {
-//             res.sendStatus(400);
-//         }
-//     });
-
-// };
-
 //check all the news
 let allNews = function(req, res) {
     News.find(function(err, allNews) {
@@ -95,7 +70,7 @@ let allNews = function(req, res) {
     });
 };
 
-
+//likedNews Function
 var likedNews = function(req, res){
 
     var loginUser = session.loginUser;
@@ -128,6 +103,7 @@ var likedNews = function(req, res){
     }
 };
 
+//Comment function
 var addcomments = function(req, res){
     var object_id = req.params.news_ojbectid;
     News.findById(object_id, function(err, the_news){
