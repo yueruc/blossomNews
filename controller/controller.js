@@ -68,8 +68,6 @@ let getinfoByUsername = function(req, res) {
     });
 };
 
-
-
 //check all the news
 let allNews = function(req, res) {
     News.find(function(err, allNews) {
@@ -81,7 +79,7 @@ let allNews = function(req, res) {
     });
 };
 
-
+//likedNews Function
 var likedNews = function(req, res){
 
     var loginUser = session.loginUser;
@@ -114,6 +112,7 @@ var likedNews = function(req, res){
     }
 };
 
+//Comment function
 var addcomments = function(req, res){
     var object_id = req.params.news_ojbectid;
     News.findById(object_id, function(err, the_news){

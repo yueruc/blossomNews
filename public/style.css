@@ -299,10 +299,11 @@
     margin-left: 5%;
 }
 
-.comment-container{
-    width: 333px;
-    height: 70px;
-    margin-left: 5%;
+.news-font-container{
+    width: 330px;
+    height: 100px;
+    display: block;
+    position: absolute;
 }
 
 /* Login */
@@ -441,4 +442,34 @@
     margin-top: 0;
     position: absolute;
     margin-left: 5%;
+}
+
+/*Comments add on*/
+.comment-image{
+    width: 100%;
+    display: inline-block;
+}
+.comment-title{
+    width: 100%;
+}
+
+.comment-image-area{
+    width: 30%;
+    height:100%;
+    display: inline-block;
+    position: absolute;
+    margin-top: 10%;
+}
+.comment-area{
+    width:60%;
+    height:100%;
+    display: inline-block;
+    margin-top:10%;
+    position: absolute;
+    margin-left: 40%;
+
+}
+
+.comment-area form{
+    padding-top:4%;
 }

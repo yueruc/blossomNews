@@ -10,5 +10,6 @@ block content
             .grid-news
                 a(href =`/newsdetail/${onenews._id}`)
                     img(src= onenews.imageurl alt='art' width='100%')
-                    p.category-news-font #{onenews.description}
+                    .news-font-container
+                        p.category-news-font #{onenews.description}
 
