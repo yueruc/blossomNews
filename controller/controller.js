@@ -11,8 +11,17 @@ const assert = require('assert');
 
 //the main Page
 let mainPage = function(req, res) {
+    var imagecategory = ['sports', 'entertainment','travel'];
+
+    var imagesrc = ['/static/images/main-page/sport.png',
+    '/static/images/main-page/entertainment.png',
+    '/static/images/main-page/travel-1.png'];
+
+
     res.render('index',{
-        title: "BlossomNews"
+        title: "BlossomNews",
+        categories: imagecategory,
+        images: imagesrc
     });
 };
 
@@ -60,29 +69,6 @@ let getinfoByUsername = function(req, res) {
 };
 
 
-// first create news
-// let createNews = function(req, res) {
-
-//     let news = new News(
-//         {
-//             "id": req.body.id,
-//             "description": req.body.description,
-//             "url": req.body.url,
-//             "category": req.body.category,
-//             "dates": req.body.dates,
-//             "imageurl": req.body.imageurl
-//         }
-//     );
-
-//     news.save(function(err, newNews) {
-//         if (!err) {
-//             res.json(newNews);
-//         } else {
-//             res.sendStatus(400);
-//         }
-//     });
-
-// };
 
 //check all the news
 let allNews = function(req, res) {
@@ -147,6 +133,49 @@ var addcomments = function(req, res){
         });
     });
 };
+
+// var recommendnews = function(req, res){
+    
+//     var loginUser = session.loginUser;
+//     var isLogined = !!loginUser;
+//     var recommend_newsurl = new Array();
+//     var categories = new Array();
+
+
+//     if(isLogined){
+//         User.findOne({username: loginUser}, function(err, user){
+//             if (err) throw err;
+            
+//             for(var i = 0; i < 3; i++){
+//                 categories.push(user.preference[i]);
+//             }
+        
+//             News.find(3, {category:categories},function(err, news){
+//                 if (err) throw err;
+//                 recommend_newsurl.push(news.imageurl);
+//             });  
+            
+
+            
+//             //News.find(3, category: userPrefs)
+
+
+            
+//             console.log(categories);
+//             console.log(recommend_newsurl);
+//             res.render('index',{
+//                 title: "BlossomNews",
+//                 images: recommend_newsurl,
+//                 categories: categories
+//             });
+//         });
+//     }
+
+//     else{
+//         res.redirect('/');
+//     }
+
+// }
 
 
 module.exports.mainPage = mainPage;

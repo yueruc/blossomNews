@@ -12,6 +12,7 @@ block content
         .liked-news-container
             p.logined-font Liked News
             each news in likedNews
-                p #{news.id}
-                p #{news.description}
-                img(src= news.imageurl alt='likedNews' width='15%')       
+                a(href=`/newsdetail/${news._id}`)
+                    p #{news.id}
+                    p #{news.description}
+                    img(src= news.imageurl alt='likedNews' width='15%')       

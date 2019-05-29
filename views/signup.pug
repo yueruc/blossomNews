@@ -1,7 +1,8 @@
 extends default
 
 block content
-        form.login-background(action='/action_page.php')
+        //form.login-background(action='/action_page.php')
+        form.login-background(method='POST' action='/signup')
             div.signup-form
                 div.login-container
                     h1.login-title Sign Up
@@ -19,18 +20,18 @@ block content
                     div.form-group
                         p.signup-font Please select at least 3 categories of your preference.
                         hr
-                        input.checkbox(type='checkbox' name='vehicle1' value='Bike')
+                        input.checkbox(type='checkbox' name ='Entertainment' value='Entertainment')
                         |  Entertainment
-                        input.checkbox(type='checkbox' name='vehicle2' value='Car')
+                        input.checkbox(type='checkbox' name ='Science' value='Science')
                         |  Science
-                        input.checkbox(type='checkbox' name='vehicle3' value='Boat')
+                        input.checkbox(type='checkbox' name = 'Sport' value='Sport')
                         |  Sport
                         br
-                        input.checkbox(type='checkbox' name='vehicle1' value='Bike')
+                        input.checkbox(type='checkbox' name ='Health' value='Health')
                         |  Health
-                        input.checkbox(type='checkbox' name='vehicle2' value='Car')
+                        input.checkbox(type='checkbox' name ='Technology' value='Technology')
                         |  Technology
-                        input.checkbox(type='checkbox' name='vehicle3' value='Boat')
+                        input.checkbox(type='checkbox' name ='Business' value='Business')
                         |  Business
 
                     button.btn.btn-primary.signup-submit(type='submit') Sign Up

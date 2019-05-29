@@ -6,6 +6,7 @@ var user = require('../controller/user.js');
 var news = require('../controller/news.js');
 
 router.get('/', controller.mainPage);
+//router.get('/index', controller.recommendnews);
 
 // Display a random generated user.
 router.get('/users/all', controller.allUsers);
@@ -14,6 +15,7 @@ router.get('/users/:username', controller.getinfoByUsername);
 
 router.get('/login', user.login);
 router.get('/signUp', user.signUp);
+router.post('/signUp', user.register);
 router.post('/login', user.checkUser);
 router.get('/logout', user.logout);
 
