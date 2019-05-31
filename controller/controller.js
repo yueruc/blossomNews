@@ -11,18 +11,18 @@ const assert = require('assert');
 
 //the main Page
 let mainPage = function(req, res) {
-    var imagecategory = ['sports', 'entertainment','travel'];
 
-    var imagesrc = ['/static/images/main-page/sport.png',
-    '/static/images/main-page/entertainment.png',
-    '/static/images/main-page/travel-1.png'];
+    var loginUser = session.loginUser;
+    var isLogined = !!loginUser;
 
-
-    res.render('index',{
-        title: "BlossomNews",
-        categories: imagecategory,
-        images: imagesrc
-    });
+    if(isLogined){
+        res.redirect('/index');
+    }
+    else{
+        res.render('main',{
+            title: "BlossomNews"
+        });
+    }
 };
 
 // Push 4 users and save to database.
@@ -133,48 +133,38 @@ var addcomments = function(req, res){
     });
 };
 
-// var recommendnews = function(req, res){
+var recommendnews = function(req, res){
     
-//     var loginUser = session.loginUser;
-//     var isLogined = !!loginUser;
-//     var recommend_newsurl = new Array();
-//     var categories = new Array();
+    var loginUser = session.loginUser;
+    var isLogined = !!loginUser;
+    var categories = new Array();
 
 
-//     if(isLogined){
-//         User.findOne({username: loginUser}, function(err, user){
-//             if (err) throw err;
+    if(isLogined){
+        User.findOne({username: loginUser}, function(err, user){
+            if (err) throw err;
             
-//             for(var i = 0; i < 3; i++){
-//                 categories.push(user.preference[i]);
-//             }
-        
-//             News.find(3, {category:categories},function(err, news){
-//                 if (err) throw err;
-//                 recommend_newsurl.push(news.imageurl);
-//             });  
-            
+            for(var i = 0; i < 3; i++){
+                categories.push(user.preference[i]);
+            }
 
-            
-//             //News.find(3, category: userPrefs)
+            News.find({category:categories},function(err, news){
+                if (err) throw err;
+                res.render('index',{
+                    title: "BlossomNews",
+                    images: [news[0].imageurl, news[1].imageurl,news[2].imageurl],
+                    newsID:  [news[0]._id, news[1]._id, news[2]._id],
+                    newstitle:  [news[0].id, news[1].id, news[2].id]
+                });
+            });  
+        });
+    }
 
+    else{
+        res.redirect('/');
+    }
 
-            
-//             console.log(categories);
-//             console.log(recommend_newsurl);
-//             res.render('index',{
-//                 title: "BlossomNews",
-//                 images: recommend_newsurl,
-//                 categories: categories
-//             });
-//         });
-//     }
-
-//     else{
-//         res.redirect('/');
-//     }
-
-// }
+}
 
 
 module.exports.mainPage = mainPage;
@@ -190,3 +180,4 @@ module.exports.allNews = allNews;
 //interaction
 module.exports.likedNews = likedNews;
 module.exports.addcomments = addcomments;
+module.exports.recommendnews = recommendnews;

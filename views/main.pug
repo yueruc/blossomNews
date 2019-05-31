@@ -10,20 +10,20 @@ block content
             li(data-target='#demo' data-slide-to='2')
         .carousel-inner
             .carousel-item.active
-                a(href=`/newsdetail/${newsID[0]}`)
-                    img(src = images[0] alt = 'image' width='1100' height='500')
+                a(href='/sports')
+                    img(src='static/images/main-page/sport.png' alt='Los Angeles' width='1100' height='500')
                 .carousel-caption
-                    p.title #{newstitle[0]}
+                    p.title Sports News
             .carousel-item
-                a(href=`/newsdetail/${newsID[1]}`)
-                    img(src = images[1] alt = 'image' width='1100' height='500')
+                a(href='/entertainment')
+                    img(src='static/images/main-page/entertainment.png' alt='Chicago' width='1100' height='500')
                 .carousel-caption
-                    p.title #{newstitle[1]}
+                    p.title Entertainment
             .carousel-item
-                a(href=`/newsdetail/${newsID[2]}`)
-                    img(src = images[2] alt = 'image' width='1100' height='500')
+                a(href='/health')
+                    img(src='static/images/main-page/travel-1.png' alt='New York' width='1100' height='500')
                 .carousel-caption
-                    p.title #{newstitle[2]}
+                    p.title Travel News
         a.carousel-control-prev(href='#demo' data-slide='prev')
             span.carousel-control-prev-icon
         a.carousel-control-next(href='#demo' data-slide='next')

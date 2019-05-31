@@ -6,7 +6,7 @@ var user = require('../controller/user.js');
 var news = require('../controller/news.js');
 
 router.get('/', controller.mainPage);
-//router.get('/index', controller.recommendnews);
+router.get('/index', controller.recommendnews);
 
 // Display a random generated user.
 router.get('/users/all', controller.allUsers);
@@ -20,8 +20,8 @@ router.post('/login', user.checkUser);
 router.get('/logout', user.logout);
 
 //Display news
-
 router.get('/news/all', controller.allNews);
+
 
 router.post('/news', news.createNews);
 router.get('/addnews', news.addNews);
@@ -34,7 +34,6 @@ router.get('/likednews/:category/:objectid', controller.likedNews);
 
 
 router.post('/addcomment/:category/:news_ojbectid', controller.addcomments);
-//router.get('/addcomment/:ojbectid', controller.);
 
 
 

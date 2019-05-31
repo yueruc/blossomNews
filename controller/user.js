@@ -34,7 +34,6 @@ let signUp = function(req,res){
 };
 
 let register = function(req,res){
-    console.log(req.body);
     var preference = new Array();
     if (req.body.Entertainment){
         preference.push("entertainment");
@@ -62,6 +61,7 @@ let register = function(req,res){
 
     new_user.save(function(err, newUser) {
         if (!err) {
+            session.loginUser = req.body.username;
             res.redirect('/');
         } else {
            res.redirect('/signup');
@@ -79,7 +79,6 @@ let checkUser = function(req, res){
         if(!err){
             if(user){
                 session.loginUser = userName;
-                //res.redirect('/index');
                 res.redirect('/');
                 
             }else{
