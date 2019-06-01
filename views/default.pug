@@ -24,8 +24,9 @@ html
             
                 div.form-group
                     form(method='POST' action='/search')
-                        input.form-control.mr-sm-2(type='text' placeholder='Search', name = 'search')
                         button.search #{Search}
+                        input.form-control.mr-sm-2(type='text' placeholder='Search', name = 'search')
+                    
                 
                 a(href='/signUp')
                     img.signup(src='/static/images/main-page/signup.svg')

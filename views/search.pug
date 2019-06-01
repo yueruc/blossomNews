@@ -2,7 +2,8 @@ extends default
 
 block content
     div.container
-       each one in news
+        p.search-title #{title}
+        each one in news
             a(href=`/newsdetail/${one._id}`)
                 p #{one.description}
                 img(src= one.imageurl alt='search' width='15%')

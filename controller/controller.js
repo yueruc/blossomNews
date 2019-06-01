@@ -177,10 +177,16 @@ var search = function(req, res){
             res.sendStatus(400);
         }
         else{
-            //res.send(news);
-            res.render('search',{
-                news: news
-            });
+            if(news.length > 0){
+                res.render('search',{
+                    title: `Search Results for ${search}`,
+                    news: news
+                });
+            }
+            else{
+                res.render('searchNotFound');
+            }
+           
         }
     })
     
