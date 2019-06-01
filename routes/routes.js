@@ -31,9 +31,11 @@ router.get('/findnews/:objectid', news.findUrl);
 
 //interaction
 router.get('/likednews/:category/:objectid', controller.likedNews);
-
-
 router.post('/addcomment/:category/:news_ojbectid', controller.addcomments);
+
+//search
+router.post('/search', controller.search);
+
 
 
 

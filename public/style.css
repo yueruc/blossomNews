@@ -44,8 +44,11 @@
     width: 50px;
     display: inline-block;
     position: absolute;
+    background: url("/public/static/images/main-page/search.svg");
+    background-size: cover;
     top: 6%;
     left: 29%;
+    cursor: pointer;
 }
 .nav div input{
     width: 100%;

@@ -167,6 +167,25 @@ var recommendnews = function(req, res){
 }
 
 
+var search = function(req, res){
+    var search = req.body.search;
+    News.find({description: {
+        "$regex": search,
+        "$options": "i"
+    }}, function(err, news){
+        if(err){
+            res.sendStatus(400);
+        }
+        else{
+            //res.send(news);
+            res.render('search',{
+                news: news
+            });
+        }
+    })
+    
+}
+
 module.exports.mainPage = mainPage;
 
 //user
@@ -181,3 +200,4 @@ module.exports.allNews = allNews;
 module.exports.likedNews = likedNews;
 module.exports.addcomments = addcomments;
 module.exports.recommendnews = recommendnews;
+module.exports.search = search;
