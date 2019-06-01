@@ -45,11 +45,12 @@
     height: 50px;
     display: inline-block;
     position: absolute;
-    background: url(static/images/main-page/search.svg);
+    background: url("/static/images/main-page/search.svg");
     background-size: cover;
-    top: 6%;
-    left: -10%;
+    top: -17%;
+    left: -13%;
     cursor: pointer;
+    border: none;
 }
 .nav div input{
     width: 100%;
@@ -478,9 +479,27 @@
     padding-top:4%;
 }
 
-.search-title{
-    font-size: 50px;
-    color:Black;
-    display: block;
-    text-align: center;
+/* Search Result*/
+.search-news-container{
+    width: 90%;
+    height: 30%;
+    margin-left: 5%;
+    background-color:white;
+    margin-top:5%;
+    margin-bottom: 5%;
+}
+.search-news-container:hover{
+    background-color:mistyrose;
+}
+
+.search-news-container img{
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+}
+
+.search-news-container p {
+    width: 60%;
+    display: inline-block;
+    margin-left: 5%;
 }

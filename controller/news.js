@@ -71,6 +71,7 @@ var findOneCategoryNews = function(req, res) {
 
 
 var newsdetail = function(req, res) {
+    var loginUser = session.loginUser;
     var newscategory = req.params.category;
     News.findOne({_id:req.params.objectid}).
     populate('comment').
