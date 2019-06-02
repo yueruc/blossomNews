@@ -9,7 +9,7 @@ This is a web application that is used for people who enjoy reading news under d
 
 ## Main Functions:
 
-_ "Sign up": User can create an account in our app for future use. After user signed up, he will direct has login status.
+_ "Sign up": User can create an account in our app for future use. After user signed up, he will directly be logged in.
 
 _ "Log in": A user can log in to our system by registering an account. It will go to the Main Page if the user successfully login in. If the login is failed, it will still stay in the Login Page. 
 
