@@ -28,7 +28,7 @@ let login = function(req,res){
 };
 
 let signUp = function(req,res){
-    res.render('signUp',{
+    res.render('signup',{
         title: "signUp"
     });
 };
@@ -84,8 +84,6 @@ let checkUser = function(req, res){
             }else{
                 res.redirect('/login');
             }
-
-
         }else{
             res.sendStatus(400);
         }
