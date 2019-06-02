@@ -17,7 +17,6 @@ const newsSchema = new Schema(
         dates: Date,
         imageurl: String,
         comment: [{type: Schema.Types.ObjectId, ref: "comments"}],
-        isLiked: Boolean
     }
 );
 

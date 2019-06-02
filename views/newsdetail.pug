@@ -4,8 +4,12 @@ block content
 
     div.container
         .comment-image-area
-            a(href =`/likednews/${eachnews.category}/${eachnews._id}`)
-                button.dislike #{Liked}
+            if islike
+                a(href =`/dislikednews/${eachnews.category}/${eachnews._id}`)
+                    button.like #{Liked}
+            else
+                a(href =`/likednews/${eachnews.category}/${eachnews._id}`)
+                    button.dislike #{Liked}
             img.comment-image(src = eachnews.imageurl alt='art' width='30%')
             p.category-news-font.comment-title
                 a(href=`/findnews/${eachnews._id}`) #{eachnews.description}

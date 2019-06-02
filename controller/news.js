@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const News = mongoose.model('news');
+const User = mongoose.model('users');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('abf08a911e534e629682c3098dc1b9ca');
-
+var session = require('express-session');
+var identityKey = 'skey';
 
 let createNews = function(req, res) {
 
@@ -71,16 +73,47 @@ var findOneCategoryNews = function(req, res) {
 
 
 var newsdetail = function(req, res) {
-    var newscategory = req.params.category;
-    News.findOne({_id:req.params.objectid}).
-    populate('comment').
-    exec(function(err, news){
-        res.render('newsdetail', {
-            title: newscategory,
-            eachnews: news,
-            comments: news.comment
+    var loginUser = session.loginUser;
+    var isLogined = !!loginUser;
+    var isliked = false;
+
+    if(isLogined){
+        User.findOne({username: loginUser}, function(err, user){
+            var newscategory = req.params.category;
+            News.findOne({_id:req.params.objectid}).
+            populate('comment').
+            exec(function(err, news){
+                for (var i = 0; i < user.likedNews.length; i++){
+                    if ((user.likedNews[i]).equals(news._id)){
+                        isliked = true;
+                    }
+                }
+            
+                res.render('newsdetail', {
+                    title: newscategory,
+                    eachnews: news,
+                    comments: news.comment,
+                    islike: isliked
+                });
+            })
         });
-    })
+    }
+
+    else{
+        var newscategory = req.params.category;
+        News.findOne({_id:req.params.objectid}).
+        populate('comment').
+        exec(function(err, news){
+            res.render('newsdetail', {
+                title: newscategory,
+                eachnews: news,
+                comments: news.comment,
+                islike: isliked
+            });
+        })
+    }
+    
+   
 };
 
 //check news by url

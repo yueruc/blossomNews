@@ -112,6 +112,44 @@ var likedNews = function(req, res){
     }
 };
 
+
+var dislikedNews = function(req, res){
+
+    var loginUser = session.loginUser;
+    var isLogined = !!loginUser;
+
+
+    if(isLogined){
+       
+        User.findOne({username: loginUser}, function(err, user){
+            if (err) throw err;
+            News.findOne({_id: req.params.objectid}, function(err, news_item){
+    
+                if (err) throw err;
+
+                news_item.save(function(err){
+                    if (err) throw err;
+                    for (var i = 0; i < user.likedNews.length; i++){
+                        if ((user.likedNews[i]).equals(news_item._id)){
+                            user.likedNews.splice(i, 1);
+                        }
+                    }
+                    
+    
+                    user.save(function(err){
+                        if (err) throw err;
+                        res.redirect(`/newsdetail/${req.params.objectid}`);
+                    });
+    
+                });
+            });
+        });
+    }
+    else{
+        res.redirect('/login');
+    }
+};
+
 //Comment function
 var addcomments = function(req, res){
     var object_id = req.params.news_ojbectid;
@@ -204,6 +242,7 @@ module.exports.allNews = allNews;
 
 //interaction
 module.exports.likedNews = likedNews;
+module.exports.dislikedNews = dislikedNews;
 module.exports.addcomments = addcomments;
 module.exports.recommendnews = recommendnews;
 module.exports.search = search;
